@@ -10,5 +10,10 @@ brief description of their functionality:
     This is a short interactive text chat and my first attempt at programming using a 3 dimensional matrix as well as my first time
     attempting to make an interactive console based program.
 
+
+2.Decrypt_me:
+    This is a short attempt to decrypt a file in C using a txt file in the form of the phonetic alphabet, this was my first attempt
+    in trying to read a seperate file in C and modify its contents
+
 Thankyou for visiting my repository ^^,
 By Jace Weerawardena
