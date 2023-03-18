@@ -12,7 +12,9 @@ brief description of their functionality:
 
 
 2.Decrypt_me:
-    This is a short attempt to decrypt a file in C using a txt file in the form of the phonetic alphabet, this was my first attempt
+
+    This is a short attempt to decrypt a file in C using a txt file in the form of the phonetic alphabet, the file has a deceptively simple syntax 
+    but is actually multilayered and posed unique challenges the futher I worked on the problem. This was also my first attempt
     in trying to read a seperate file in C and modify its contents
 
 Thankyou for visiting my repository ^^,
