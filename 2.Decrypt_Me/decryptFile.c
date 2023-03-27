@@ -4,50 +4,53 @@
 
 void decoder(char* encodedString, char* returnedString)
 {
-  int spaceCounter = 0;
-  int recurseBool = 0;
   int charlimit = 580000;
-  int outIndex = 0;
+  int outIndex = 1;
   char outBufferArr[charlimit];
-  
+  char finalMessage[charlimit];
+  outBufferArr[0] = encodedString[0];
+  //char wordBlackList[24][8] = {"ALFA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL", "INDIA", "KILO", "LIMA", "MIKE", "NOVEMBER", "OSCAR", "PAPA", "ROMEO", "SIERRA", "TANGO", "UNIFORM", "VICTOR", "WHISKEY", "X-RAY", "YANKEE", "ZULU"};
+
   for (int i = 0; i < strlen(encodedString); i++) 
   {
-    if(isupper(encodedString[i]))
+    if(encodedString[i] == ' ' && encodedString[i + 1] == ' ')
     {
       outBufferArr[outIndex] = encodedString[i];
       outIndex++;
     }
-    
-    if(encodedString[i] == ' ')
+    else if(encodedString[i] == ' ' && encodedString[i + 1] != ' ')
     {
-      spaceCounter++;
-      if(spaceCounter >= 2)
-      {
-        recurseBool++;
-        outBufferArr[outIndex] = encodedString[i];
-        outIndex++;
-      }
+      outBufferArr[outIndex] = encodedString[i + 1];
+      outIndex++;
     }else
     {
-      spaceCounter = 0;
+      continue;
     }
-    
   }
 
-    // if(recurseBool)
-    // {
+  int decodedBool = 1;
+  for(int i = 0; i < strlen(outBufferArr); i++)
+  {
+    if(outBufferArr[i] == ' ')
+    {
+      decodedBool--;
+      decoder(outBufferArr, returnedString);
+    }else
+    {
+      continue;
+    }
+  }
 
-    // }
-    // else
-    // {
-        // printf("final buffer is:\n%s", outBufferArr);
+  if(decodedBool == 1)
+  {
+        printf("%s", outBufferArr);
         FILE *outFptr;
         outFptr = fopen("output.txt","w");
         fprintf(outFptr, outBufferArr);
         fclose(outFptr);
         *returnedString = outBufferArr;
-    // }
-  
+  }
+
 };
 
 int main(){
@@ -65,12 +68,6 @@ int charLimit = 580000;
   fgets(stringBuffer, charLimit, fptr);
   fclose(fptr); 
   decoder(stringBuffer, stringBuffer2);
-  // printf("final buffer is:\n%s", stringBuffer2);
-
-    // FILE *outFptr;
-    // outFptr = fopen("output.txt","w");
-    // fprintf(outFptr, stringBuffer2);
-    // fclose(outFptr);
 
   return 0;
 }
