@@ -2,14 +2,13 @@
 #include <ctype.h>
 #include <string.h>
 
-void decoder(char* encodedString, char* returnedString)
+int decoder(char *encodedString)
 {
   int charlimit = 580000;
   int outIndex = 1;
   char outBufferArr[charlimit];
   char finalMessage[charlimit];
   outBufferArr[0] = encodedString[0];
-  //char wordBlackList[24][8] = {"ALFA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL", "INDIA", "KILO", "LIMA", "MIKE", "NOVEMBER", "OSCAR", "PAPA", "ROMEO", "SIERRA", "TANGO", "UNIFORM", "VICTOR", "WHISKEY", "X-RAY", "YANKEE", "ZULU"};
 
   for (int i = 0; i < strlen(encodedString); i++) 
   {
@@ -27,47 +26,28 @@ void decoder(char* encodedString, char* returnedString)
       continue;
     }
   }
-
-  int decodedBool = 1;
-  for(int i = 0; i < strlen(outBufferArr); i++)
-  {
-    if(outBufferArr[i] == ' ')
-    {
-      decodedBool--;
-      decoder(outBufferArr, returnedString);
-    }else
-    {
-      continue;
-    }
-  }
-
-  if(decodedBool == 1)
-  {
-        printf("%s", outBufferArr);
-        FILE *outFptr;
-        outFptr = fopen("output.txt","w");
-        fprintf(outFptr, outBufferArr);
-        fclose(outFptr);
-        *returnedString = outBufferArr;
-  }
-
-};
+  printf("final buffer is:\n%s", outBufferArr);
+  FILE *outFptr;
+  outFptr = fopen("output1.txt","w"); //increment the output'num'.txt to decrypt file fully (should take 6 iterations)
+  fprintf(outFptr, outBufferArr);
+  fclose(outFptr);
+  return 1;
+}
 
 int main(){
 
   FILE *fptr;
-  fptr = fopen("decryptMe.txt", "r");
+  fptr = fopen("decryptMe.txt", "r"); //change to output'num'.txt to decrypt file fully (should take 6 iterations)
   if(fptr == NULL)
   {
-    return 1;
+    printf("file not found");
   }
 
 int charLimit = 580000;
   char stringBuffer[charLimit];
-  char stringBuffer2[charLimit];
   fgets(stringBuffer, charLimit, fptr);
   fclose(fptr); 
-  decoder(stringBuffer, stringBuffer2);
+  decoder(stringBuffer);
 
   return 0;
 }
