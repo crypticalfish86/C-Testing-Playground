@@ -15,7 +15,9 @@ brief description of their functionality:
 
     This is a short attempt to decrypt a file in C using a txt file in the form of the phonetic alphabet, the file has a deceptively simple syntax 
     but is actually multilayered and posed unique challenges the futher I worked on the problem. This was also my first attempt
-    in trying to read a seperate file in C and modify its contents, the file had to be decrypted a total of 6 times, if you want to begin decrypting from decryptMe.txt simply change the output'num'.txt on line 31 and line 40 (beggining with the decryptMe.txt on line 31 and output1.txt on line 40)
+    in trying to read a seperate file in C and modify its contents, the file had to be decrypted a total of 6 times, if you want to begin decrypting 
+    from decryptMe.txt simply change the output'num'.txt on line 31 and line 40 (beggining with the decryptMe.txt on line 31 and output1.txt on line 
+    40)
 
 Thankyou for visiting my repository ^^,
 By Jace Weerawardena
