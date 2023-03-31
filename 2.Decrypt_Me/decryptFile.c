@@ -37,7 +37,7 @@ int decoder(char *encodedString)
 int main(){
 
   FILE *fptr;
-  fptr = fopen("decryptMe.txt", "r"); //change to output'num'.txt to decrypt file fully (should take 6 iterations)
+  fptr = fopen("decryptMe.txt", "r"); //change to output'num'.txt to decrypt file fully (should be always one less than on line 31 and should take 6 iterations)
   if(fptr == NULL)
   {
     printf("file not found");
