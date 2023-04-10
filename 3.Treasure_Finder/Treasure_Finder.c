@@ -1,3 +1,4 @@
+#include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -20,24 +21,47 @@ void printRow()
 
 int main()
 {
-    int quit = 0;
-    //while(!quit)
-    //{
-       //printf("r");
-       for(int i = 0; i < COLS; i++)
-       {    if(i == 0 || i == (COLS - 1))
+        srand(time(NULL));
+
+        int rCOL = rand() % 30;
+        if(rCOL == 0)
+        {
+            rCOL = 1;
+        }
+        else if(rCOL == 29)
+        {
+            rCOL = 28;
+        }
+
+        int rROW = rand() % 60;
+        if(rROW == 0)
+        {
+            rROW = 1;
+        }
+        else if(rROW == 59)
+        {
+            rROW = 58;
+        }
+
+       for(int y = 0; y < COLS; y++)
+       {    if(y == 0 || y == (COLS - 1))
             {
                 printRow();
-            }else
+            }
+            else
             {
-                for(int i = 0; i <ROWS; i++)
+                for(int x = 0; x <ROWS; x++)
                 {
-                    if(i == 0)
+                    if(x == 0)
                     {
                         printf("||");
-                    }else if(i == (ROWS - 1))
+                    }else if(x == (ROWS - 1))
                     {
                         printf("||\n");
+                    }
+                    else if(x == rROW && y == rCOL)
+                    {
+                        printf("X");
                     }else
                     {
                         printf(" ");
@@ -45,6 +69,5 @@ int main()
                 }
             }
        }
-    //}
     return 0;
 }
